@@ -18,7 +18,7 @@ function toHttps(url) {
 }
 
 const urlParams = new URLSearchParams(location.search);
-const GDS_URL = toHttps(urlParams.get('url') || urlParams.get('model'));
+const GDS_URL = '/spm.gds';
 const GDS_PROCESS = urlParams.get('process');
 const PDK = urlParams.get('pdk') ?? legacyProcessToPDK[GDS_PROCESS] ?? 'sky130A';
 const OUTPUT_PROCESS_TO_CONSOLE = false;
@@ -311,6 +311,7 @@ function loadLocalGDS(file) {
       console.error('Error processing file', error);
     }
   };
+
   reader.onerror = function (event) {
     loadingStatus.innerText = 'Error processing file';
   };
